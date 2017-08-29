@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">SampleAndroid</string>
+    <string name="zip_hint">enter your zip code</string>
+    <string name="search">search</string>
 </resources>
