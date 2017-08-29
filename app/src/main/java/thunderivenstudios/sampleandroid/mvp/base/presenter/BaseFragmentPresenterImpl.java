@@ -13,14 +13,15 @@ public class BaseFragmentPresenterImpl<V extends BaseFragmentView> extends BaseP
         super(view);
     }
 
+    @SuppressWarnings("ThrowableResultOfMethodCallIgnored")
     protected void displayError(Throwable throwable) {
-        displayMessage("Error", throwable.getMessage());
+        displayMessage("Error", decodedError(throwable).getLocalizedMessage(), false);
     }
 
-    protected void displayMessage(String title, String message) {
+    protected void displayMessage(String title, String message, boolean finish) {
         if (getView() != null) {
             getView().dismissProgressDialog();
-            getView().displayMessage(title, message);
+            getView().displayMessage(title, message, finish);
         }
     }
 

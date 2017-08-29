@@ -50,6 +50,10 @@ public abstract class SingleFragmentActivity extends BaseActivity {
         return R.layout.activity_single_fragment;
     }
 
+    public void replaceFragmentWithAnimation(Fragment fragment, boolean addToBackStack) {
+        replaceFragment(fragment, addToBackStack, R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right);
+    }
+
     public void replaceFragment(Fragment fragment, boolean addToBackStack) {
         replaceFragment(fragment, addToBackStack, 0, 0);
     }

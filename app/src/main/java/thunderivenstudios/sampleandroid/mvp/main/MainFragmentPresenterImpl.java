@@ -3,14 +3,13 @@ package thunderivenstudios.sampleandroid.mvp.main;
 import android.support.annotation.IdRes;
 
 import thunderivenstudios.sampleandroid.mvp.base.presenter.BaseFragmentPresenterImpl;
-import thunderivenstudios.sampleandroid.mvp.base.view.BaseFragmentView;
 
 /**
  * Created by thunderiven on 8/28/17.
  */
 
 class MainFragmentPresenterImpl extends BaseFragmentPresenterImpl<MainFragmentView> {
-    private String mZip;
+    private String mZip = "";
 
     MainFragmentPresenterImpl(MainFragmentView view) {
         super(view);
@@ -23,7 +22,7 @@ class MainFragmentPresenterImpl extends BaseFragmentPresenterImpl<MainFragmentVi
 
     @Override
     public void onViewClicked(@IdRes int viewId, int position) {
-        if (mZip != null && getView() != null) {
+        if (getView() != null) {
             getView().openWeatherList(mZip);
         }
     }

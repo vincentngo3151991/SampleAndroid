@@ -11,22 +11,13 @@ import java.util.List;
  */
 
 public class Weathers extends BaseModel {
-    @SerializedName("cod")
-    @Expose
-    private String mCode;
+
     @SerializedName("list")
     @Expose
     private List<Weather> mWeathers = new ArrayList<>();
     @SerializedName("city")
     @Expose
     private City mCity;
-    @SerializedName("message")
-    @Expose
-    private String mMessage;
-
-    public String getCode() {
-        return mCode;
-    }
 
     public List<Weather> getWeathers() {
         return mWeathers;
@@ -34,9 +25,5 @@ public class Weathers extends BaseModel {
 
     public City getCity() {
         return mCity;
-    }
-
-    public String getMessage() {
-        return mMessage;
     }
 }

@@ -14,7 +14,6 @@ import java.util.HashSet;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import thunderivenstudios.sampleandroid.R;
 import thunderivenstudios.sampleandroid.mvp.base.activity.SingleFragmentActivity;
 import thunderivenstudios.sampleandroid.mvp.base.presenter.BaseFragmentPresenter;
 import thunderivenstudios.sampleandroid.mvp.base.view.BaseFragmentView;
@@ -85,12 +84,17 @@ public abstract class BaseFragment<P extends BaseFragmentPresenter> extends Frag
     //======================================================
 
     @Override
-    public void displayMessage(String title, String message) {
+    public void displayMessage(String title, String message, boolean finish) {
         if (getActivity() != null) {
             new AlertDialog.Builder(getActivity())
                     .setTitle(title)
                     .setMessage(message)
-                    .setPositiveButton(android.R.string.ok, (dialog, which) -> dialog.dismiss())
+                    .setPositiveButton(android.R.string.ok, (dialog, which) -> {
+                        dialog.dismiss();
+                        if (finish && getActivity() instanceof SingleFragmentActivity) {
+                            ((SingleFragmentActivity) getActivity()).popBackStack();
+                        }
+                    })
                     .setIcon(0)
                     .show();
         }

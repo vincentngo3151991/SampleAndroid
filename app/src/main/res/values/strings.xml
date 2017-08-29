@@ -2,4 +2,7 @@
     <string name="app_name">SampleAndroid</string>
     <string name="zip_hint">enter your zip code</string>
     <string name="search">search</string>
+    <string name="thumbnail">thumbnail</string>
+    <string name="high_string" formatted="false">High: %.1f</string>
+    <string name="low_string" formatted="false">Low: %.1f</string>
 </resources>

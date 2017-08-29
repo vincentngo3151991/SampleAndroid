@@ -2,21 +2,16 @@ package thunderivenstudios.sampleandroid.mvp.main;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.widget.TextViewCompat;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.TextView;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnTextChanged;
 import thunderivenstudios.sampleandroid.R;
+import thunderivenstudios.sampleandroid.mvp.base.activity.SingleFragmentActivity;
 import thunderivenstudios.sampleandroid.mvp.base.fragment.BaseFragment;
 import thunderivenstudios.sampleandroid.mvp.base.presenter.BaseFragmentPresenter;
-import thunderivenstudios.sampleandroid.mvp.base.presenter.BasePresenter;
+import thunderivenstudios.sampleandroid.mvp.weather_list.WeatherListFragment;
 
 /**
  * Created by thunderiven on 8/28/17.
@@ -57,6 +52,8 @@ public class MainFragment extends BaseFragment<BaseFragmentPresenter> implements
 
     @Override
     public void openWeatherList(String zip) {
-
+        if (getActivity() instanceof SingleFragmentActivity) {
+            ((SingleFragmentActivity) getActivity()).replaceFragmentWithAnimation(WeatherListFragment.newInstance(zip), true);
+        }
     }
 }
