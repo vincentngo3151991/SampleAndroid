@@ -2,8 +2,11 @@ package thunderivenstudios.sampleandroid.mvp.main;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.KeyEvent;
 import android.view.View;
+import android.widget.EditText;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnTextChanged;
@@ -18,10 +21,19 @@ import thunderivenstudios.sampleandroid.mvp.weather_list.WeatherListFragment;
  */
 
 public class MainFragment extends BaseFragment<BaseFragmentPresenter> implements MainFragmentView{
+    @BindView(R.id.zip_code)
+    EditText mZipCodeET;
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mUnbinder.add(ButterKnife.bind(this, view));
+        mZipCodeET.setOnKeyListener((view1, i, keyEvent) -> {
+            if (keyEvent.getAction() == KeyEvent.ACTION_DOWN && i == KeyEvent.KEYCODE_ENTER) {
+                onSearchClicked(view1);
+                return true;
+            }
+            return false;
+        });
     }
 
     @OnTextChanged(R.id.zip_code)

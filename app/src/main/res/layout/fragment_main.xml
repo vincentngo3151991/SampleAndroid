@@ -11,6 +11,9 @@
         android:layout_marginLeft="@dimen/margin_large"
         android:layout_marginRight="@dimen/margin_large"
         android:hint="@string/zip_hint"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:imeOptions="actionSearch"
         />
 
     <TextView
